@@ -1,0 +1,493 @@
+/* Base Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 94vw;
+    max-width: 1300px;
+    margin: 40px auto 0 auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex: 1;
+}
+
+/* Header */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.main-title-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.solicare-logo {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    margin-bottom: 1px;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #6366f1;
+    letter-spacing: -1px;
+    text-align: center;
+    margin: 0;
+}
+
+.sub-title {
+    font-size: 1.18rem;
+    color: #374151;
+    margin-bottom: 18px;
+    text-align: center;
+    font-weight: 400;
+    word-break: keep-all;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sub-title-line1,
+.sub-title-line2 {
+    display: inline;
+}
+
+/* 데스크톱에서는 한 줄로 */
+@media (min-width: 701px) {
+    .sub-title {
+        flex-direction: row;
+        gap: 8px;
+    }
+    
+    .sub-title-line1::after {
+        content: " ";
+    }
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+}
+
+.pdf-btn-separator {
+    width: 1px;
+    height: 30px;
+    background: #d1d5db;
+    margin: 0 8px;
+}
+
+.btn {
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.btn:hover {
+    background: #4338ca;
+}
+
+.btn-radio {
+    background: #fff;
+    color: #6366f1;
+    border: 2px solid #6366f1;
+    font-weight: 700;
+}
+
+.btn-radio.selected {
+    background: #6366f1;
+    color: #fff;
+    border: 2px solid #6366f1;
+}
+
+/* PDF Viewer */
+.pdf-viewer {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 0;
+    transition: margin-bottom 0.3s;
+}
+
+.pdf-viewer iframe {
+    width: 100%;
+    max-width: 1100px;
+    height: 560px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fafafa;
+    transition: height 0.3s;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+}
+
+.pdf-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+}
+
+#pdfCanvas {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+    max-width: 100%;
+    height: auto;
+}
+
+.pdf-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px 24px;
+    background: #f8fafc;
+    border-radius: 8px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+}
+
+.pdf-controls-top {
+    margin-bottom: 15px;
+}
+
+.pdf-controls-bottom {
+    margin-top: 15px;
+}
+
+.pdf-nav-btn {
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.pdf-nav-btn:hover:not(:disabled) {
+    background: #4338ca;
+}
+
+.pdf-nav-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+#pageInfo {
+    font-size: 0.95rem;
+    color: #374151;
+    font-weight: 600;
+    min-width: 120px;
+    text-align: center;
+}
+
+.pdf-viewer.active {
+    margin-bottom: 38px;
+}
+
+/* Dividers */
+.divider {
+    width: 100%;
+    height: 0;
+    border-bottom: 2px solid #e0e7ff;
+    margin: 19px 0;
+    display: block;
+}
+
+#pdf-divider {
+    display: none; /* PDF가 표시될 때만 보이도록 JS에서 제어 */
+}
+
+#repo-divider {
+    margin: 38px 0 0 0; /* 레포 섹션 위의 여백을 더 크게 */
+}
+
+/* Repo Section */
+.repo-title {
+    text-align: center;
+    color: #6366f1;
+    margin-bottom: 18px;
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Repo Lists */
+.repo-list-row1,
+.repo-list-row2 {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+/* Repo Cards - Unified Styles */
+.repo-card {
+    flex: 1 1 0;
+    max-width: 280px;
+    min-width: 200px;
+    margin: 0;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 18px;
+    border: 2px solid #e0e7ff;
+    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 20px 16px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.repo-card:hover {
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.22);
+    background: #eef2ff;
+    border-color: #6366f1;
+    transform: translateY(-2px);
+}
+
+.repo-card h3 {
+    margin: 0 0 16px 0;
+    font-size: 1.15rem;
+    color: #6366f1;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.repo-card .qr {
+    margin: 0 auto 12px auto;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(99, 102, 241, 0.09);
+}
+
+.repo-card .qr img {
+    width: 100px;
+    height: 100px;
+}
+
+.repo-card .repo-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #fff;
+    background: #6366f1;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 1px 4px rgba(99, 102, 241, 0.09);
+    transition: all 0.2s ease;
+    letter-spacing: -0.3px;
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.repo-card:hover .repo-link {
+    background: #4338ca;
+    transform: translateY(-1px);
+}
+
+/* Copyright */
+.copyright {
+    text-align: center;
+    padding: 12px;
+    margin: 8px auto 0 auto;
+    font-size: 0.9rem;
+    color: #64748b;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    max-width: 1200px;
+}
+
+.copyright a {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.copyright a:hover {
+    color: #4338ca;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .repo-list-row1,
+    .repo-list-row2 {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .repo-card {
+        max-width: 90vw;
+        min-width: 280px;
+    }
+}
+
+@media (max-width: 700px) {
+    .btn-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* GitHub Organization 버튼 하단에 추가 여백 */
+    .btn:not(.btn-radio) {
+        margin-bottom: 8px;
+    }
+
+    /* 마지막 일반 버튼(GitHub Organization) 뒤에만 여백 적용 */
+    .btn:not(.btn-radio):last-of-type {
+        margin-bottom: 16px;
+    }
+
+    .pdf-btn-separator {
+        display: none;
+    }
+
+    .btn-radio {
+        font-size: 1.05rem;
+        padding: 12px 24px;
+        min-width: 120px;
+    }
+
+    .repo-card {
+        min-width: 240px;
+        padding: 20px 12px 16px 12px;
+    }
+    
+    .sub-title {
+        font-size: 1.1rem;
+        padding: 0 10px;
+        line-height: 1.5;
+    }
+    
+    .copyright {
+        margin: 6px 8px 0 8px;
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        padding: 8px 2vw;
+        aspect-ratio: unset;
+    }
+
+    .pdf-container {
+        max-width: 98vw;
+    }
+
+    #pdfCanvas {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .pdf-controls {
+        flex-direction: row;
+        gap: 12px;
+        padding: 10px 16px;
+        margin-bottom: 12px;
+    }
+
+    .pdf-nav-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    #pageInfo {
+        font-size: 0.85rem;
+        min-width: 90px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 4px 1vw;
+    }
+
+    #pdfCanvas {
+        max-width: 95vw;
+    }
+
+    .pdf-controls {
+        margin-bottom: 8px;
+        padding: 8px 12px;
+        gap: 10px;
+    }
+
+    .pdf-nav-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    #pageInfo {
+        font-size: 0.8rem;
+        min-width: 80px;
+    }
+}
